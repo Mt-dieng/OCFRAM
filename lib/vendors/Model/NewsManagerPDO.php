@@ -5,6 +5,17 @@ use \Entity\News;
 
 class NewsManagerPDO extends NewsManager
 {
+  protected function add(News $news)
+  {
+    $requete = $this->dao->prepare('INSERT INTO news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateAjout = NOW(), dateModif = NOW()');
+    
+    $requete->bindValue(':titre', $news->titre());
+    $requete->bindValue(':auteur', $news->auteur());
+    $requete->bindValue(':contenu', $news->contenu());
+    
+    $requete->execute();
+  }
+  
   public function getList($debut = -1, $limite = -1)
   {
     $sql = 'SELECT id, auteur, titre, contenu, dateAjout, dateModif FROM news ORDER BY id DESC';
@@ -48,4 +59,5 @@ class NewsManagerPDO extends NewsManager
     
     return null;
   }
+
 }
