@@ -2,6 +2,7 @@
 namespace Model;
 
 use \OCFram\Manager;
+use \Entity\News;
 
 abstract class NewsManager extends Manager
 {
@@ -33,7 +34,7 @@ abstract class NewsManager extends Manager
       throw new \RuntimeException('La news doit être validée pour être enregistrée');
     }
   }
-  
+
    /**
    * Méthode permettant de supprimer une news.
    * @param $id int L'identifiant de la news à supprimer
