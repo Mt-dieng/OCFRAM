@@ -3,6 +3,7 @@ namespace App\Frontend\Modules\News;
 
 use \OCFram\BackController;
 use \OCFram\HTTPRequest;
+use \Entity\News;
 use \Entity\Comment;
 
 class NewsController extends BackController
@@ -22,4 +23,5 @@ class NewsController extends BackController
     $this->page->addVar('news', $news);
     $this->page->addVar('comments', $this->managers->getManagerOf('Comments')->getListOf($news->id()));
   }
+  
 }
