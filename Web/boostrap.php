@@ -1,5 +1,4 @@
 <?php
-
 const DEFAULT_APP = 'Frontend';
 
 // Si l'application n'est pas valide, on va charger l'application par défaut qui se chargera de générer une erreur 404
@@ -21,7 +20,11 @@ $modelLoader->register();
 $entityLoader = new SplClassLoader('Entity', __DIR__.'/../lib/vendors');
 $entityLoader->register();
 
-// Il ne nous suffit plus qu'à déduire le nom de la classe et à l'instancier
+$formBuilderLoader = new SplClassLoader('FormBuilder', __DIR__.'/../lib/vendors');
+$formBuilderLoader->register();
+
+
+// Il ne nous suffit plus qu'à déduire le nom de la classe et de l'instancier
 $appClass = 'App\\'.$_GET['app'].'\\'.$_GET['app'].'Application';
 
 $app = new $appClass;
