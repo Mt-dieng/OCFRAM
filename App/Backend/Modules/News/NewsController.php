@@ -12,12 +12,15 @@ use \OCFram\FormHandler;
 class NewsController extends BackController
 {
 
-  public function executeDeleteComment(HTTPRequest $request)
+  public function executeDelete(HTTPRequest $request)
   {
-    $this->managers->getManagerOf('Comments')->delete($request->getData('id'));
-    
-    $this->app->user()->setFlash('Le commentaire a bien été supprimé !');
-    
+    $newsId = $request->getData('id');
+ 
+    $this->managers->getManagerOf('News')->delete($newsId);
+    $this->managers->getManagerOf('Comments')->deleteFromNews($newsId);
+ 
+    $this->app->user()->setFlash('La news a bien été supprimée !');
+ 
     $this->app->httpResponse()->redirect('.');
   }
 
@@ -39,7 +42,7 @@ class NewsController extends BackController
     $this->page->addVar('listeNews', $manager->getList());
     $this->page->addVar('nombreNews', $manager->count());
   }
-  
+
   public function executeInsert(HTTPRequest $request)
   {
     $this->processForm($request);
