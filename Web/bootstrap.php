@@ -1,6 +1,6 @@
 <?php
 // var_dump(is_dir("C:\wamp64\www\OCFram"));
-// var_dump(file_exists("C:\wamp64\www\OCFram\lib\OCFram\SplClassLoader.php"));
+// var_dump(file_exists("C:\wamp64\www\OCFram\lib\OCFram\Page.php"));
 // echo getcwd();
 
 const DEFAULT_APP = 'Frontend';
