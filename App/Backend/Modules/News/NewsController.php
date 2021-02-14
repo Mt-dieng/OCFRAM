@@ -35,6 +35,7 @@ class NewsController extends BackController
   
   public function executeIndex(HTTPRequest $request)
   {
+    
     $this->page->addVar('title', 'Gestion des news');
  
     $manager = $this->managers->getManagerOf('News');

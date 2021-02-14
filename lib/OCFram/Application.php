@@ -31,19 +31,22 @@ abstract class Application
     foreach ($routes as $route)
     {
       $vars = [];
- 
+     
       // On regarde si des variables sont présentes dans l'URL.
       if ($route->hasAttribute('vars'))
       {
         $vars = explode(',', $route->getAttribute('vars'));
       }
- 
+     
       // On ajoute la route au routeur.
       $router->addRoute(new Route($route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars));
+    var_dump($router);
     }
+
  
     try
     {
+      var_dump($this->httpRequest->requestURI());
       // On récupère la route correspondante à l'URL.
       $matchedRoute = $router->getRoute($this->httpRequest->requestURI());
     }
