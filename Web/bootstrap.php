@@ -2,7 +2,7 @@
 // var_dump(is_dir("C:\wamp64\www\OCFram"));
 // var_dump(file_exists("C:\wamp64\www\OCFram\lib\OCFram\Page.php"));
 // echo getcwd();
-var_dump($_GET['app']);
+// var_dump($_GET['app']);
 const DEFAULT_APP = 'Frontend';
 
 // Si l'application n'est pas valide, on va charger l'application par défaut qui se chargera de générer une erreur 404

@@ -24,7 +24,6 @@ abstract class Application
  
     $xml = new \DOMDocument;
     $xml->load(__DIR__.'/../../App/'.$this->name.'/Config/routes.xml');
- 
     $routes = $xml->getElementsByTagName('route');
  
     // On parcourt les routes du fichier XML.
@@ -40,10 +39,9 @@ abstract class Application
      
       // On ajoute la route au routeur.
       $router->addRoute(new Route($route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars));
-    var_dump($router);
+    // var_dump($router);
     }
 
- 
     try
     {
       var_dump($this->httpRequest->requestURI());

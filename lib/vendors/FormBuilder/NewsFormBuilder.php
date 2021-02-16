@@ -35,6 +35,7 @@ class NewsFormBuilder extends FormBuilder
         'rows' => 8,
         'cols' => 60,
         'validators' => [
+          new MaxLengthValidator('Le titre spécifié est trop long (100 caractères maximum)', 100),
           new NotNullValidator('Merci de spécifier le contenu de la news'),
         ],
        ]));
