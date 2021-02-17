@@ -3,11 +3,9 @@ namespace App\Backend\Modules\News;
 
 use \OCFram\BackController;
 use \OCFram\HTTPRequest;
-use \Entity\Comment;
 use \Entity\News;
-use \FormBuilder\CommentFormBuilder;
-use \FormBuilder\NewsFormBuilder;
-use \OCFram\FormHandler;
+use \Entity\Comment;
+
 
 class NewsController extends BackController
 {
