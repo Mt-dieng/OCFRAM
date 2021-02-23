@@ -28,27 +28,7 @@ class CommentsManagerPDO extends CommentsManager
     $this->dao->exec('DELETE FROM comments WHERE news = '.(int) $news);
   }
   
-  protected function modify(Comment $comment)
-  {
-    $q = $this->dao->prepare('UPDATE comments SET auteur = :auteur, contenu = :contenu WHERE id = :id');
-    
-    $q->bindValue(':auteur', $comment->auteur());
-    $q->bindValue(':contenu', $comment->contenu());
-    $q->bindValue(':id', $comment->id(), \PDO::PARAM_INT);
-    
-    $q->execute();
-  }
   
-  public function get($id)
-  {
-    $q = $this->dao->prepare('SELECT id, news, auteur, contenu FROM comments WHERE id = :id');
-    $q->bindValue(':id', (int) $id, \PDO::PARAM_INT);
-    $q->execute();
-    
-    $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
-    
-    return $q->fetch();
-  }
   public function getListOf($news)
   {
     if (!ctype_digit($news))
@@ -72,4 +52,25 @@ class CommentsManagerPDO extends CommentsManager
     return $comments;
   }
 
+  protected function modify(Comment $comment)
+  {
+    $q = $this->dao->prepare('UPDATE comments SET auteur = :auteur, contenu = :contenu WHERE id = :id');
+    
+    $q->bindValue(':auteur', $comment->auteur());
+    $q->bindValue(':contenu', $comment->contenu());
+    $q->bindValue(':id', $comment->id(), \PDO::PARAM_INT);
+    
+    $q->execute();
+  }
+  
+  public function get($id)
+  {
+    $q = $this->dao->prepare('SELECT id, news, auteur, contenu FROM comments WHERE id = :id');
+    $q->bindValue(':id', (int) $id, \PDO::PARAM_INT);
+    $q->execute();
+    
+    $q->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Comment');
+    
+    return $q->fetch();
+  }
 }

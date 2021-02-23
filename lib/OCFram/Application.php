@@ -44,7 +44,7 @@ abstract class Application
 
     try
     {
-      var_dump($this->httpRequest->requestURI());
+      // var_dump($this->httpRequest->requestURI());
       // On récupère la route correspondante à l'URL.
       $matchedRoute = $router->getRoute($this->httpRequest->requestURI());
     }

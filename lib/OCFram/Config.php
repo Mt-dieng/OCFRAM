@@ -13,7 +13,7 @@ class Config extends ApplicationComponent
       $xml->load(__DIR__.'/../../App/'.$this->app->name().'/Config/app.xml');
 
       $elements = $xml->getElementsByTagName('define');
-
+var_dump($elements);
       foreach ($elements as $element)
       {
         $this->vars[$element->getAttribute('var')] = $element->getAttribute('value');
