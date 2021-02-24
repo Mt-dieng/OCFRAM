@@ -4,7 +4,7 @@
 // echo getcwd();
 // var_dump($_GET['app']);
 const DEFAULT_APP = 'Frontend';
-var_dump('test');
+// var_dump('test');
 // Si l'application n'est pas valide, on va charger l'application par défaut qui se chargera de générer une erreur 404
 if (!isset($_GET['app']) || !file_exists(__DIR__.'/../App/'.$_GET['app'])) $_GET['app'] = DEFAULT_APP;
 
