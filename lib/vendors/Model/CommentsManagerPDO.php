@@ -61,6 +61,7 @@ class CommentsManagerPDO extends CommentsManager
     $q->bindValue(':id', $comment->id(), \PDO::PARAM_INT);
     
     $q->execute();
+  
   }
   
   public function get($id)

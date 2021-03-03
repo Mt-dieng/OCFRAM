@@ -57,12 +57,14 @@ class NewsController extends BackController
   
   public function executeInsertComment(HTTPRequest $request)
   {
+    
    // Si le formulaire a été envoyé.
    if ($request->method() == 'POST')
    {
+    
      $comment = new Comment([
        'news' => $request->getData('news'),
-       'auteur' => $request->postData('auteur'),
+       'auteur' => $request->postData('pseudo'),
        'contenu' => $request->postData('contenu')
      ]);
    }
@@ -77,7 +79,7 @@ class NewsController extends BackController
    $form = $formBuilder->form();
 
    $formHandler = new FormHandler($form, $this->managers->getManagerOf('Comments'), $request);
-
+ var_dump($formHandler);
    if ($formHandler->process())
    {
      $this->app->user()->setFlash('Le commentaire a bien été ajouté, merci !');
