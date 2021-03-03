@@ -57,4 +57,11 @@ abstract class NewsManager extends Manager
    * @return News La news demandée
    */
   abstract public function getUnique($id);
+  
+  /**
+   * Méthode permettant de modifier une news.
+   * @param $news news la news à modifier
+   * @return void
+   */
+  abstract protected function modify(News $news);
 }

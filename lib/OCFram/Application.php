@@ -23,7 +23,7 @@ abstract class Application
     $router = new Router;
  
     $xml = new \DOMDocument;
-    echo $this->name;
+    // echo $this->name;
     $xml->load(__DIR__.'/../../App/'.$this->name.'/Config/routes.xml');
     $routes = $xml->getElementsByTagName('route');
  
@@ -40,12 +40,10 @@ abstract class Application
      
       // On ajoute la route au routeur.
       $router->addRoute(new Route($route->getAttribute('url'), $route->getAttribute('module'), $route->getAttribute('action'), $vars));
-    // var_dump($router);
     }
 
     try
     {
-      var_dump($this->httpRequest->requestURI());
       // On récupère la route correspondante à l'URL.
       $matchedRoute = $router->getRoute($this->httpRequest->requestURI());
     }
@@ -54,7 +52,6 @@ abstract class Application
       if ($e->getCode() == Router::NO_ROUTE)
       {
         // Si aucune route ne correspond, c'est que la page demandée n'existe pas.
-        // var_dump('test');
         $this->httpResponse->redirect404();
       }
     }
